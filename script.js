@@ -1,3 +1,11 @@
+// Constants
+const ANIMATION_RESET_DELAY = 10;
+const SPARKLE_DURATION = 1000;
+const SNOWFLAKE_INTERVAL = 200;
+const INITIAL_SNOWFLAKES = 30;
+const SNOWFLAKE_BURST_COUNT = 10;
+const SNOWFLAKE_BURST_DELAY = 50;
+
 // Create snowflakes
 function createSnowflake() {
     const snowflake = document.createElement('div');
@@ -28,10 +36,10 @@ function createSnowflake() {
 }
 
 // Create snowflakes continuously
-setInterval(createSnowflake, 200);
+setInterval(createSnowflake, SNOWFLAKE_INTERVAL);
 
 // Add initial snowflakes
-for (let i = 0; i < 30; i++) {
+for (let i = 0; i < INITIAL_SNOWFLAKES; i++) {
     setTimeout(createSnowflake, i * 100);
 }
 
@@ -41,7 +49,7 @@ document.querySelectorAll('.decoration').forEach(decoration => {
         this.style.animation = 'none';
         setTimeout(() => {
             this.style.animation = '';
-        }, 10);
+        }, ANIMATION_RESET_DELAY);
         
         // Create sparkle effect
         const sparkle = document.createElement('div');
@@ -53,7 +61,7 @@ document.querySelectorAll('.decoration').forEach(decoration => {
         sparkle.style.animation = 'sparkleEffect 1s ease-out';
         this.parentElement.appendChild(sparkle);
         
-        setTimeout(() => sparkle.remove(), 1000);
+        setTimeout(() => sparkle.remove(), SPARKLE_DURATION);
     });
 });
 
@@ -86,10 +94,10 @@ card.addEventListener('mouseleave', function() {
 
 // Add keyboard interaction
 document.addEventListener('keydown', function(e) {
-    if (e.key === ' ' || e.key === 'Enter') {
+    if (e.key === 'Space' || e.key === ' ' || e.key === 'Enter') {
         // Create burst of snowflakes
-        for (let i = 0; i < 10; i++) {
-            setTimeout(createSnowflake, i * 50);
+        for (let i = 0; i < SNOWFLAKE_BURST_COUNT; i++) {
+            setTimeout(createSnowflake, i * SNOWFLAKE_BURST_DELAY);
         }
     }
 });

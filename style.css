@@ -37,7 +37,7 @@ body {
 
 @keyframes fall {
     to {
-        transform: translateY(100vh) rotate(360deg);
+        transform: translateY(100vh) translateX(var(--drift, 0)) rotate(360deg);
     }
 }
 
