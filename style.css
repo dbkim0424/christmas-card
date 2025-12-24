@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Snow animation */
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    animation: fall linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) translateX(var(--drift, 0)) rotate(360deg);
+    }
+}
+
+/* Card container */
+.card-container {
+    position: relative;
+    z-index: 2;
+    perspective: 1000px;
+}
+
+.christmas-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90vw;
+    animation: cardEntrance 1s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: scale(0.8) rotateY(-20deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+    }
+}
+
+.card-front {
+    text-align: center;
+}
+
+/* Christmas tree */
+.christmas-tree {
+    margin: 20px auto;
+    animation: treeGrow 1.5s ease-out;
+}
+
+@keyframes treeGrow {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.tree-top {
+    font-size: 3em;
+    animation: starTwinkle 2s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg);
+        filter: brightness(1.5);
+    }
+}
+
+.tree-body {
+    margin: -10px 0;
+}
+
+.tree-layer {
+    font-size: 4em;
+    line-height: 0.8;
+    animation: layerFloat 3s ease-in-out infinite;
+}
+
+.layer-1 {
+    animation-delay: 0s;
+}
+
+.layer-2 {
+    animation-delay: 0.3s;
+    font-size: 5em;
+}
+
+.layer-3 {
+    animation-delay: 0.6s;
+    font-size: 6em;
+}
+
+@keyframes layerFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.tree-trunk {
+    font-size: 2em;
+    margin-top: -15px;
+}
+
+/* Title */
+.title {
+    color: #c41e3a;
+    font-size: 2.5em;
+    margin: 20px 0 10px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: titleBounce 2s ease-in-out infinite;
+}
+
+@keyframes titleBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.subtitle {
+    color: #0f7c3f;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Decorations */
+.decorations {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.decoration {
+    font-size: 2em;
+    animation: decorationBounce 1s ease-in-out infinite;
+    display: inline-block;
+}
+
+.decoration:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.decoration:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.decoration:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.decoration:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes decorationBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(10deg);
+    }
+}
+
+/* Message */
+.message {
+    background: linear-gradient(135deg, #fef5e7 0%, #fadbd8 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px 0;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.message p {
+    color: #34495e;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin: 10px 0;
+}
+
+.message p:first-child {
+    font-weight: 600;
+    color: #c41e3a;
+}
+
+/* Footer */
+.footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed #e0e0e0;
+}
+
+.footer p {
+    color: #0f7c3f;
+    font-size: 1.2em;
+    font-weight: bold;
+    animation: footerGlow 2s ease-in-out infinite;
+}
+
+@keyframes footerGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(15, 124, 63, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(15, 124, 63, 0.6);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .christmas-card {
+        padding: 30px 20px;
+    }
+    
+    .title {
+        font-size: 2em;
+    }
+    
+    .subtitle {
+        font-size: 1.2em;
+    }
+    
+    .message p {
+        font-size: 1em;
+    }
+    
+    .tree-layer {
+        font-size: 3em;
+    }
+    
+    .layer-2 {
+        font-size: 4em;
+    }
+    
+    .layer-3 {
+        font-size: 5em;
+    }
+}
+
+/* Sparkle effect animation for decoration clicks */
+@keyframes sparkleEffect {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2) rotate(360deg);
+    }
+}
+
