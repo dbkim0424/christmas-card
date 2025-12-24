@@ -285,3 +285,16 @@ body {
         font-size: 5em;
     }
 }
+
+/* Sparkle effect animation for decoration clicks */
+@keyframes sparkleEffect {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2) rotate(360deg);
+    }
+}
+

@@ -65,22 +65,6 @@ document.querySelectorAll('.decoration').forEach(decoration => {
     });
 });
 
-// Add sparkle animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes sparkleEffect {
-        0% {
-            opacity: 1;
-            transform: scale(1) rotate(0deg);
-        }
-        100% {
-            opacity: 0;
-            transform: scale(2) rotate(360deg);
-        }
-    }
-`;
-document.head.appendChild(style);
-
 // Add hover effect to card
 const card = document.querySelector('.christmas-card');
 card.addEventListener('mouseenter', function() {
@@ -94,7 +78,8 @@ card.addEventListener('mouseleave', function() {
 
 // Add keyboard interaction
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Space' || e.key === ' ' || e.key === 'Enter') {
+    if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault(); // Prevent page scrolling
         // Create burst of snowflakes
         for (let i = 0; i < SNOWFLAKE_BURST_COUNT; i++) {
             setTimeout(createSnowflake, i * SNOWFLAKE_BURST_DELAY);
